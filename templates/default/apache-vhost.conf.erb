@@ -46,11 +46,9 @@
         Require valid-user
     <% end  %>
 
-    ## Apache optimisation by disabling the .htaccess parsing
-    ## Directives for securing directorys have been added to this file
-    AllowOverride None
-
+    AllowOverride All
     Order allow,deny
+
     <% if @params[:magento][:limit_to_ips] %>
         <% _useProxyEnvCheck = !@params[:ssl] and !node[:varnish].nil? %>
         <% @params[:magento][:limited_ips].each do |ip| %>
